@@ -3,22 +3,57 @@ import "./globals.css";
 
 import { Manrope } from "next/font/google";
 
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.hgsystems.in"),
 
+  title: "Harvest Global | Geo Foundational AI for Earth Observation",
+
+  description:
+    "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
+
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "https://www.hgsystems.in/",
+    siteName: "Harvest Global",
+
+    title: "Harvest Global | Geo Foundational AI for Earth Observation",
+
+    description:
+      "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
+
+    images: [
+      {
+        url: "https://www.hgsystems.in/images/og-image.png",
+        width: 1200,
+        height: 627,
+        alt: "Harvest Global — Geo Foundational AI for Earth Observation",
+        type: "image/png",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Harvest Global | Geo Foundational AI for Earth Observation",
+
+    description:
+      "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
+
+    images: ["https://www.hgsystems.in/images/og-image.png"],
+  },
+};
 
 const manrope = Manrope({
-
   variable: "--font-manrope",
-
   weight: ["400", "500", "600", "700", "800"],
-
   subsets: ["latin"],
-
 });
-
-export const metadata: Metadata = {
-  title: "Harvest Global",
-  description: "Harvest Global",
-};
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -26,13 +61,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${manrope.variable} max-w-screen h-full antialiased`}
     >
-      <body className="min-h-full bg-black  w-full overflow-x-hidden">
-
-
-
+      <body className="min-h-full w-full overflow-x-hidden bg-black">
         {children}
-
-
       </body>
     </html>
   );
