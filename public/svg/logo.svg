@@ -1,0 +1,32 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1280 451"
+  width="1280"
+  height="451"
+>
+  <g id="logo-content">
+    <!-- Harvest -->
+    <g id="harvest">
+      <text x="115" y="305" font-family="Arial, Helvetica, sans-serif" font-size="154" font-weight="700" letter-spacing="-7" fill="#166534">Harvest</text>
+    </g>
+
+    <!-- Global -->
+    <g id="global">
+      <!-- Global: Gl -->
+      <text x="680" y="305" font-family="Arial, Helvetica, sans-serif" font-size="154" font-weight="700" letter-spacing="-7" fill="#F97316">Gl</text>
+
+      <!-- Custom O / Leaf emblem, replacing the 'o' in Global -->
+      <g id="leaf-emblem" transform="translate(876 258)">
+        <circle cx="0" cy="0" r="34" fill="none" stroke="#166534" stroke-width="10" />
+        <g transform="translate(0 2) scale(0.42)">
+          <path d="M -5 38 C -38 34 -52 10 -51 -18 C -23 -15 -3 -2 7 20 C 10 27 7 34 -5 38 Z" fill="#166534" />
+          <path d="M 5 38 C 2 5 18 -22 52 -29 C 52 2 38 27 5 38 Z" fill="#166534" />
+          <path d="M 2 39 C 9 15 25 -4 45 -20" fill="none" stroke="white" stroke-width="2.6" stroke-linecap="round" />
+        </g>
+      </g>
+
+      <!-- Global: bal -->
+      <text x="916" y="305" font-family="Arial, Helvetica, sans-serif" font-size="154" font-weight="700" letter-spacing="-7" fill="#F97316">bal</text>
+    </g>
+  </g>
+</svg>
