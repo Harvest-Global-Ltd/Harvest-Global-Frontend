@@ -6,7 +6,7 @@ import { Manrope } from "next/font/google";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hgsystems.in"),
 
-  title: "Harvest Global | Geo Foundational AI for Earth Observation",
+  title: "Harvest Global | Unified GeoAI Stack for Earth, Weather, and SpaceAI",
 
   description:
     "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Harvest Global | Geo Foundational AI for Earth Observation",
+    title: "Harvest Global | Unified GeoAI Stack for Earth, Weather, and SpaceAI",
     description:
       "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
     url: "https://www.hgsystems.in/",
