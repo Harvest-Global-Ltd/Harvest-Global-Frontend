@@ -14,23 +14,23 @@ Marketing site for HG Systems: Next.js 16 (App Router) + React 19 + Tailwind v4 
 
 ## Commands — use `bun`, not npm/yarn
 - `bun run dev` / `bun run build` / `bun run start` / `bun run lint`
-- There is no `typecheck` script. `bun run build` (`next build`) is the full verification — it runs tsc + lint-in-build. Run it before finishing.
-- `lint` is flat-config ESLint. It currently exits 0 with a handful of tolerated warnings (raw `<img>`, unused imports) — warnings are accepted, don't chase them.
+- No `typecheck` or test scripts. `bun run build` (`next build`) is the full verification — it runs tsc + lint. Run it before finishing.
+- ESLint is flat config (`eslint.config.mjs`). It exits 0 with tolerated warnings (raw `<img>`, unused imports) — don't chase them.
 
 ## Architecture
-- Home (`app/page.tsx`) composes shared components under `components/` (Navbar, Hero, `sections/`, `footer/`, `ui/`).
-- Sub-pages live in the `app/(main)/` route group — `/about-us`, `/connect`, `/credentials`. The single shared `components/Navbar.tsx` renders on every page: home renders it in `app/page.tsx`, sub-pages render it via the `(main)` layout. It switches to dark-on-light styling (`text-black`, `button--dark`) on `/about-us` based on `usePathname`.
-- Sub-page sections live in `app/(main)/<route>/_components/` (plural). The `about-us` route uses `_component` (singular) for its `TeamCard.tsx`. Page-level section composition happens in the page files, not in layouts.
+- Home (`app/page.tsx`) composes sections directly in one file: `components/Navbar`, `components/Hero`, `components/ui/HeroReveal`, `components/sections/*`, `components/footer/Footer`.
+- Sub-pages live in the `app/(main)/` route group — `/about-us`, `/connect`, `/credentials` — each rendering Navbar via `app/(main)/layout.tsx`.
+- Sub-page sections live in the route's own folder (e.g. `about-us` uses `_component/TeamCard.tsx`). Page-level composition happens in `page.tsx`, not layouts.
+- Navbar switches to dark-on-light styling (`text-black`) on `/about-us` via `usePathname` in `components/Navbar.tsx`.
 - Path alias `@/*` → repo root.
 
 ## Content lives in `data/`, not components
-- All copy is in `data/data.json`, read through a strictly-typed `SiteData` in `data/index.ts`. Shape drift or an unknown stage `accent` fails the build on purpose. Edit copy in `data.json`; keep components presentation-only.
-- `data/images.ts` holds image-path constants separately.
+- Copy lives in `data/data.json`, exposed through a strictly-typed `SiteData` in `data/index.ts` (annotated, not cast — shape drift fails the build on purpose). `accent` values are runtime-guarded unions. Edit copy in `data.json`; keep components presentation-only.
 
 ## Design & motion
-- Tailwind v4 is config-less (CSS-first in `app/globals.css`; no `tailwind.config`). Font: Manrope via `next/font/google` with CSS variable `--font-manrope` set in `app/layout.tsx`.
-- Motion stack: GSAP + `@gsap/react` (`useGSAP`), Lenis (wrapped globally by `components/SmoothScroll`), framer-motion, ogl. Scroll-choreography primitives live in `components/ui/` (`ScrollExpand`, `ScrollStack`, `HeroReveal`, `Starbackground`, `AnimateButton`).
-- Respect `prefers-reduced-motion`: reveals must never leave content hidden (`lib/useInView.ts` models the pattern).
+- Tailwind v4 is CSS-first and config-less (`app/globals.css`; no `tailwind.config`). Manrope via `next/font/google`, CSS variable `--font-manrope`, set in `app/layout.tsx`.
+- Motion stack: GSAP + `@gsap/react` (`useGSAP`), ogl. Scroll/animation primitives live in `components/ui/` (`HeroReveal`, `reveal/Reveal`, `Starbackground`, `AccordinGallery`, `ApplicationTabs`, `Topography`).
+- Respect `prefers-reduced-motion`: reveals must never leave content hidden — `lib/useInView.ts` models the pattern.
 
 ## Planning docs
 - `plans/` holds source design files (`.pptx`, `.docx`). Check current file state before assuming what's implemented.

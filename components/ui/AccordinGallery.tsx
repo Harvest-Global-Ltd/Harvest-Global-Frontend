@@ -20,6 +20,7 @@ export default function AccordionGallery({
 }: AccordionGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const activeIndex = useRef(0);
+  const [currentActiveIndex, setCurrentActiveIndex] = useState(0);
 
   // Mobile = phones only
   // Tablet + desktop = horizontal accordion
@@ -43,6 +44,7 @@ export default function AccordionGallery({
     if (!container || !items.length) return;
 
     activeIndex.current = index;
+    setCurrentActiveIndex(index);
 
     const cards = Array.from(
       container.querySelectorAll<HTMLElement>(".accordion-card")
@@ -583,7 +585,7 @@ export default function AccordionGallery({
       text-white/80
     "
   >
-    {index === activeIndex.current ? (
+    {index === currentActiveIndex ? (
       <ChevronUp className="h-5 w-5" strokeWidth={1.8} />
     ) : (
       <ChevronDown className="h-5 w-5" strokeWidth={1.8} />
