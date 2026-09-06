@@ -9,14 +9,14 @@ import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(useGSAP);
 
-function Navbar() {
-  const navLinks = [
-    { title: "Home", href: "/" },
-    { title: "Team", href: "/about-us" },
-    { title: "Technology", href: "/#technology" },
-    { title: "Media", href: "/credentials" },
-  ];
+const navLinks = [
+  { title: "Home", href: "/" },
+  { title: "Team", href: "/about-us" },
+  { title: "Technology", href: "/#technology" },
+  { title: "Media", href: "/credentials" },
+];
 
+function Navbar() {
   const underlineRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const navRef = useRef<HTMLElement | null>(null);
 
@@ -38,6 +38,74 @@ function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  const [activeSection, setActiveSection] = useState<string>(() => {
+    if (typeof window !== "undefined" && window.location.hash === "#technology") {
+      return "technology";
+    }
+    return "";
+  });
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const handleHashChange = () => {
+      if (window.location.hash === "#technology") {
+        setActiveSection("technology");
+      } else if (!window.location.hash || window.location.hash === "#") {
+        setActiveSection("");
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    const techEl = document.getElementById("technology");
+    let observer: IntersectionObserver | null = null;
+
+    if (techEl) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection("technology");
+            } else {
+              const rect = techEl.getBoundingClientRect();
+              if (rect.top > 0) {
+                setActiveSection("");
+              }
+            }
+          });
+        },
+        {
+          rootMargin: "-20% 0px -30% 0px",
+          threshold: 0,
+        }
+      );
+
+      observer.observe(techEl);
+    }
+
+    const handleScroll = () => {
+      if (window.scrollY < 150 && window.location.hash !== "#technology") {
+        setActiveSection("");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("scroll", handleScroll);
+      if (observer) observer.disconnect();
+    };
+  }, [pathname]);
+
+  const activeHref =
+    pathname === "/"
+      ? activeSection === "technology"
+        ? "/#technology"
+        : "/"
+      : pathname;
 
   // GSAP animation for mobile menu open/close
   useGSAP(
@@ -129,7 +197,7 @@ function Navbar() {
   );
 
   const handleEnter = (index: number) => {
-    if (pathname === navLinks[index].href) return;
+    if (activeHref === navLinks[index].href) return;
     contextSafe(() => {
       const underline = underlineRefs.current[index];
       if (!underline) return;
@@ -143,7 +211,7 @@ function Navbar() {
   };
 
   const handleLeave = (index: number) => {
-    if (pathname === navLinks[index].href) return;
+    if (activeHref === navLinks[index].href) return;
     contextSafe(() => {
       const underline = underlineRefs.current[index];
       if (!underline) return;
@@ -156,6 +224,21 @@ function Navbar() {
       });
     })();
   };
+
+  useEffect(() => {
+    navLinks.forEach((link, i) => {
+      const underline = underlineRefs.current[i];
+      if (!underline) return;
+      const isActive = activeHref === link.href;
+      gsap.killTweensOf(underline);
+      gsap.to(underline, {
+        scaleX: isActive ? 1 : 0,
+        transformOrigin: isActive ? "left center" : "right center",
+        duration: 0.35,
+        ease: "power3.out",
+      });
+    });
+  }, [activeHref]);
 
   return (
     <>
@@ -207,7 +290,7 @@ function Navbar() {
                   }}
                   style={{
                     transform:
-                      pathname === link.href ? "scaleX(1)" : "scaleX(0)",
+                      activeHref === link.href ? "scaleX(1)" : "scaleX(0)",
                   }}
                   className="absolute bottom-0 left-0 h-px w-full origin-left bg-[#E46A2A]"
                 />
@@ -280,7 +363,7 @@ function Navbar() {
       >
         <div className="flex flex-col gap-8 mt-12">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = activeHref === link.href;
             return (
               <Link
                 key={link.title}
