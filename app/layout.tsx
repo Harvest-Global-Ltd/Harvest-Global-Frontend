@@ -17,18 +17,15 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    type: "website",
-    url: "https://www.hgsystems.in/",
-    siteName: "Harvest Global",
-
     title: "Harvest Global | Geo Foundational AI for Earth Observation",
-
     description:
       "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
-
+    url: "https://www.hgsystems.in/",
+    siteName: "Harvest Global",
+    type: "website",
     images: [
       {
-        url: "https://www.hgsystems.in/images/og-image.png",
+        url: "https://www.hgsystems.in/og-image.png",
         width: 1200,
         height: 627,
         alt: "Harvest Global — Geo Foundational AI for Earth Observation",
@@ -39,13 +36,10 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-
     title: "Harvest Global | Geo Foundational AI for Earth Observation",
-
     description:
       "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
-
-    images: ["https://www.hgsystems.in/images/og-image.png"],
+    images: ["https://www.hgsystems.in/og-image.png"],
   },
 };
 
