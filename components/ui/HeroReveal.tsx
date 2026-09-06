@@ -9,10 +9,31 @@ export default function Intro() {
   const textRef = useRef<HTMLImageElement>(null);
 
   useGSAP(() => {
+    const hasHash =
+      typeof window !== "undefined" &&
+      Boolean(window.location.hash && window.location.hash.length > 1);
+
     const intro = introRef.current;
     const text = textRef.current;
 
     if (!intro || !text) return;
+
+    if (hasHash) {
+      intro.style.display = "none";
+      window.dispatchEvent(new CustomEvent("intro-complete"));
+
+      try {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: "smooth" });
+          });
+        }
+      } catch {
+        // ignore invalid hash selector
+      }
+      return;
+    }
 
     const tl = gsap.timeline();
 
@@ -68,7 +89,7 @@ export default function Intro() {
       className="fixed inset-0 z-9999 flex items-center justify-center bg-black"
     >
       <img
-      ref={textRef}
+        ref={textRef}
         src="/svg/logo.svg"
         alt="Harvest Global"
         className="w-80 md:w-[32rem] lg:w-[44rem]"

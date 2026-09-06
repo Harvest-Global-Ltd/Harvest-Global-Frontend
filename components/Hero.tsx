@@ -33,6 +33,20 @@ const Hero = () => {
 
       window.addEventListener("mousemove", handleMouseMove);
 
+      const hasHash =
+        typeof window !== "undefined" &&
+        Boolean(window.location.hash && window.location.hash.length > 1);
+
+      if (hasHash) {
+        gsap.set(".hero-content", {
+          visibility: "visible",
+          opacity: 1,
+        });
+        return () => {
+          window.removeEventListener("mousemove", handleMouseMove);
+        };
+      }
+
       const heroHighlight = SplitText.create(".highlight-tag", {
         type: "chars",
       });
