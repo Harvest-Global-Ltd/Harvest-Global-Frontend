@@ -16,7 +16,7 @@ const Team = [
     id: "team-1",
     name: "Preeti Chaudhary",
     role: "Founder & CEO",
-    focus: "Technology, digital transformation & strategic execution",
+
     image: "/images/team/PreetiChaudhary.png",
     prev:"Former IBM HK, incoming Stanford STP Program",
     linkedin: "https://www.linkedin.com/in/chaudhary-preeti-160738199/",
@@ -26,7 +26,7 @@ const Team = [
     id: "team-2",
     name: "AVM Pawan Kumar",
     role: "Senior Consultant",
-    focus: "Aerospace, defence, space & geospatial intelligence",
+
     image: "/images/team/PawanKumar.png",
     prev:"Former DG, DSA",
     linkedin:
@@ -37,7 +37,7 @@ const Team = [
     id: "team-3",
     name: "Ritika Verma",
     role: "Program Management Office",
-    focus: "Strategy, partnerships & business growth",
+
     image: "/images/team/ritika.jpeg",
     prev:"IIT Madras",
     linkedin: "https://www.linkedin.com/in/ritika-verma-2329631ab/",
@@ -47,7 +47,7 @@ const Team = [
     id: "team-4",
     name: "Abhishek Yadav",
     role: "Finance and Market Analyst",
-    focus: "Valuation, Research, and Financial Analysis",
+
     image: "/images/team/abhishek.png",
     prev:"Shaheed Sukhdev College of Business Studies",
     linkedin: "https://www.linkedin.com/in/abhishek-yadav-193717283/",

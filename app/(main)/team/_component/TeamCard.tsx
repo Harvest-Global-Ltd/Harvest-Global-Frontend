@@ -6,7 +6,7 @@ interface TeamMember {
   id: string;
   name: string;
   role: string;
-  focus: string;
+
   prev:string;
   image: string;
   linkedin?: string;
@@ -17,7 +17,7 @@ interface TeamCardProps {
   member: TeamMember;
 }
 const TeamCard = ({
-  member: { name, role, focus, prev, image, linkedin, mail },
+  member: { name, role, prev, image, linkedin, mail },
 }: TeamCardProps) => {
   return (
     <div
@@ -74,9 +74,7 @@ const TeamCard = ({
               {prev}
             </p>
           )}
-          <p className="max-w-[390px] text-[15px] leading-[1.7] text-[#626262] md:text-[16px]">
-            {focus}
-          </p>
+      
 
           {/* Social / Contact Icons */}
           <div className=" flex w-full items-center justify-center gap-2 md:justify-end">
