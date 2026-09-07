@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Harvest Global | Unified GeoAI Stack for Earth, Weather, and SpaceAI",
     description:
-      "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
+      "Harvest Global SSP Pvt Ltd (HG Systems) pioneering Earth Intelligence integrates satellite imagery, climate and weather data, ground observations and geospatial intelligence into an enterprise-grade GeoAI stack, enabling governments and industries to move from fragmented data to predictive, actionable intelligence",
     url: "https://www.hgsystems.in/",
     siteName: "Harvest Global",
     type: "website",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Harvest Global | Geo Foundational AI for Earth Observation",
     description:
-      "Sovereign GeoAI, Private AI Cloud, and Edge Intelligence for Earth Observation.",
+      "Harvest Global SSP Pvt Ltd (HG Systems) pioneering Earth Intelligence integrates satellite imagery, climate and weather data, ground observations and geospatial intelligence into an enterprise-grade GeoAI stack, enabling governments and industries to move from fragmented data to predictive, actionable intelligence",
     images: ["https://www.hgsystems.in/og-image.png"],
   },
 };

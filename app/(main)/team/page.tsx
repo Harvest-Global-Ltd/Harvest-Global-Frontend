@@ -17,7 +17,7 @@ const Team = [
     name: "Preeti Chaudhary",
     role: "Founder & CEO",
 
-    image: "/images/team/PreetiChaudhary.png",
+    image: "/images/team/preetiChaudhary.jpeg",
     prev:"Former IBM HK, incoming Stanford STP Program",
     linkedin: "https://www.linkedin.com/in/chaudhary-preeti-160738199/",
     mail: "preeti.chaudhary@hgsystems.in",
