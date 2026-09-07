@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import React from "react";
 import Reveal from "@/components/ui/reveal/Reveal";
 import TeamCard from "./_component/TeamCard";
@@ -11,6 +10,15 @@ import {
   ArrowRight,
   ArrowDown,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Team — Harvest Global | HG Systems",
+  description:
+    "Meet the multidisciplinary team at Harvest Global building enterprise-grade GeoAI infrastructure for Earth Observation and climate intelligence.",
+  alternates: {
+    canonical: "https://www.hgsystems.in/team",
+  },
+};
 const Team = [
   {
     id: "team-1",

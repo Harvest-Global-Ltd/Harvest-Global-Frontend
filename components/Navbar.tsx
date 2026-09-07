@@ -301,20 +301,14 @@ function Navbar() {
           {/* RIGHT — Connect / Hamburger */}
           <div className="flex items-center justify-end">
             <div className="flex gap-4">
-              <Link href={"/connect"} className="hidden md:block">
-                <button className="px-3 cursor-pointer font-bold text-white bg-orange-600 py-2 rounded-md">
-                  Large Project
-                </button>
+              <Link href={"/connect"} className="hidden md:block px-3 cursor-pointer font-bold text-white bg-orange-600 py-2 rounded-md">
+                Large Project
               </Link>
-              <Link href={"/connect"} className="hidden md:block">
-                <button
-                  className={cn(
-                    "px-3 cursor-pointer font-bold bg-white text-black py-2 rounded-md",
-                    pathname === "/about-us" && " bg-black text-white",
-                  )}
-                >
-                  Connect
-                </button>
+              <Link href={"/connect"} className={cn(
+                "hidden md:block px-3 cursor-pointer font-bold bg-white text-black py-2 rounded-md",
+                pathname === "/about-us" && " bg-black text-white",
+              )}>
+                Connect
               </Link>
             </div>
             <button
@@ -381,20 +375,14 @@ function Navbar() {
           })}
         </div>
         <div className="flex w-full flex-col gap-4">
-          <Link href={"/connect"} onClick={() => setIsOpen(false)} className="w-full">
-            <button className="px-3 w-full cursor-pointer font-bold text-white bg-orange-600 py-2 rounded-md">
-              Large Project
-            </button>
+          <Link href={"/connect"} onClick={() => setIsOpen(false)} className="w-full px-3 w-full cursor-pointer font-bold text-white bg-orange-600 py-2 rounded-md text-center block">
+            Large Project
           </Link>
-          <Link href={"/connect"} onClick={() => setIsOpen(false)} className="w-full">
-            <button
-              className={cn(
-                "px-3 w-full cursor-pointer font-bold bg-white text-black py-2 rounded-md",
-                pathname === "/about-us" && " bg-black text-white",
-              )}
-            >
-              Connect
-            </button>
+          <Link href={"/connect"} onClick={() => setIsOpen(false)} className={cn(
+            "w-full px-3 w-full cursor-pointer font-bold bg-white text-black py-2 rounded-md text-center block",
+            pathname === "/about-us" && " bg-black text-white",
+          )}>
+            Connect
           </Link>
         </div>
       </div>

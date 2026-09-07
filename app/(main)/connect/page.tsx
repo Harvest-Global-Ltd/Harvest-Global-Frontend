@@ -1,6 +1,14 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Connect — Harvest Global | HG Systems",
+  description:
+    "Get in touch with Harvest Global for GeoAI partnerships, Earth Observation projects, and sovereign AI cloud deployments.",
+  alternates: {
+    canonical: "https://www.hgsystems.in/connect",
+  },
+};
 
 const ConnectPage = () => {
   return (
@@ -36,24 +44,24 @@ const ConnectPage = () => {
                 CONNECT WITH HGSYSTEMS
               </p>
 
-              <p className="text-left text-2xl font-extrabold md:text-5xl">
+              <h1 className="text-left text-2xl font-extrabold md:text-5xl">
                 Intelligence starts with a
                 <span className="ml-2 text-green-700">
                   conversation.
                 </span>
-              </p>
+              </h1>
 
               <div>
-                <h4 className="text-left text-xl">
+                <p className="text-left text-xl">
                   Have an idea, requirement or partnership to discuss?
-                </h4>
+                </p>
 
-                <h4 className="text-left text-4xl font-bold">
-                  Let’s
+                <p className="text-left text-4xl font-bold">
+                  Let&apos;s
                   <span className="ml-2 text-green-700">
                     Connect!
                   </span>
-                </h4>
+                </p>
               </div>
             </div>
           </div>
@@ -73,7 +81,9 @@ const ConnectPage = () => {
             <p className="mb-8 text-sm">Fill in our form:</p>
 
             <form className="flex flex-col">
+              <label htmlFor="connect-name" className="sr-only">Name</label>
               <input
+                id="connect-name"
                 type="text"
                 placeholder="Name"
                 className="
@@ -87,7 +97,9 @@ const ConnectPage = () => {
                 "
               />
 
+              <label htmlFor="connect-email" className="sr-only">Email address</label>
               <input
+                id="connect-email"
                 type="email"
                 placeholder="Email address"
                 className="
@@ -101,7 +113,9 @@ const ConnectPage = () => {
                 "
               />
 
+              <label htmlFor="connect-message" className="sr-only">Your message</label>
               <textarea
+                id="connect-message"
                 placeholder="Your message"
                 rows={4}
                 className="

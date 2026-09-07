@@ -1,9 +1,17 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight, Award, Globe2, Mic2 } from "lucide-react";
 
 import Footer from "@/components/footer/Footer";
+
+export const metadata: Metadata = {
+  title: "Credentials & Recognition — Harvest Global | HG Systems",
+  description:
+    "Recognised across national and international forums for pioneering work in GeoAI, Earth Observation, and sovereign AI infrastructure.",
+  alternates: {
+    canonical: "https://www.hgsystems.in/credentials",
+  },
+};
 
 const recognitions = [
   {
@@ -39,7 +47,7 @@ const recognitions = [
 
 export default function CredentialsPage() {
   return (
-    <main className="relative w-full bg-black text-white">
+    <div className="relative w-full bg-black text-white">
       {/* =========================================================
           HEADING + RECOGNITIONS (single section, no black hero gap)
           BACKGROUND IMAGE HERE
@@ -199,6 +207,6 @@ export default function CredentialsPage() {
 
       {/* FOOTER */}
       <Footer />
-    </main>
+    </div>
   );
 }

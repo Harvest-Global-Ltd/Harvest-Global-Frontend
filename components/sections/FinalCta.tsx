@@ -86,12 +86,12 @@ function FinalCta() {
             LET&apos;S BUILD TOGETHER
           </p>
 
-          <h3
+          <h2
             data-reveal="heading"
             className="max-w-3xl text-2xl font-bold leading-[1.5] tracking-tight text-[#FFF6EF] sm:text-3xl md:text-4xl lg:text-6xl"
           >
             {title}
-          </h3>
+          </h2>
 
           {/* GSAP Fill Button */}
           <Link href="/connect">

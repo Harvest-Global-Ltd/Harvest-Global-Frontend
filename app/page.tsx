@@ -14,22 +14,25 @@ import Vision from "@/components/sections/Vision";
 
 export default function Home() {
   return (
-    <main className="bg-black  text-white">
+    <>
       <Navbar />
 
-      <Hero />
-      <HeroReveal />
-      <ParternerdLogo />
+      <main className="bg-black text-white">
+        <Hero />
+        <HeroReveal />
+        <ParternerdLogo />
 
-      <Vision />
+        <Vision />
 
-      <Challenge />
+        <Challenge />
 
-      <Technology />
-      <UnifiedGeoStack />
-      <Applications />
-      <FinalCta />
+        <Technology />
+        <UnifiedGeoStack />
+        <Applications />
+        <FinalCta />
+      </main>
+
       <Footer />
-    </main>
+    </>
   );
 }

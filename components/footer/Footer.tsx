@@ -7,9 +7,9 @@ import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 export default function Footer() {
   const navLinks = [
     { title: "Home", href: "/" },
-    { title: "About", href: "/about-us" },
+    { title: "About", href: "/team" },
     { title: "Technology", href: "/#technology" },
-    { title: "Media", href: "/media" },
+    { title: "Media", href: "/credentials" },
 
     { title: "Connect", href: "/connect" },
   ];
