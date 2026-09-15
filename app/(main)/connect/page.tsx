@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ConnectForm from "./_component/Contactform";
 
 export const metadata: Metadata = {
   title: "Connect — Harvest Global | HG Systems",
@@ -67,88 +68,7 @@ const ConnectPage = () => {
           </div>
 
           {/* RIGHT — FORM */}
-<div
-  className="
-    connect-block
-    rounded-md
-    border border-white/20
-    bg-[#0E1C20]/90
-    p-5
-    text-white
-    backdrop-blur-md
-  "
->
-            <p className="mb-8 text-sm">Fill in our form:</p>
-
-            <form className="flex flex-col">
-              <label htmlFor="connect-name" className="sr-only">Name</label>
-              <input
-                id="connect-name"
-                type="text"
-                placeholder="Name"
-                className="
-                  border-b border-white/30
-                  bg-transparent
-                  px-3 py-5
-                  text-white
-                  outline-none
-                  placeholder:text-white/40
-                  focus:border-white
-                "
-              />
-
-              <label htmlFor="connect-email" className="sr-only">Email address</label>
-              <input
-                id="connect-email"
-                type="email"
-                placeholder="Email address"
-                className="
-                  border-b border-white/30
-                  bg-transparent
-                  px-3 py-5
-                  text-white
-                  outline-none
-                  placeholder:text-white/40
-                  focus:border-white
-                "
-              />
-
-              <label htmlFor="connect-message" className="sr-only">Your message</label>
-              <textarea
-                id="connect-message"
-                placeholder="Your message"
-                rows={4}
-                className="
-                  resize-none
-                  border-b border-white/30
-                  bg-transparent
-                  px-3 py-5
-                  text-white
-                  outline-none
-                  placeholder:text-white/40
-                  focus:border-white
-                "
-              />
-
-              <button
-                type="submit"
-                className="
-                  mt-7 w-fit cursor-pointer
-                  rounded-md
-                  bg-orange-500
-                  px-7 py-4
-                  text-sm
-                  uppercase
-                  tracking-wide
-                  text-white
-                  transition-all
-                  hover:scale-105
-                "
-              >
-                Submit message
-              </button>
-            </form>
-          </div>
+<ConnectForm/>
         </div>
 
         {/* SOCIALS — SINGLE COMPONENT */}
