@@ -1,93 +1,72 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { sendMail } from "@/action/contact";
+import { useFetch } from "@/hooks/useFetch";
+import { contactSchema } from "@/models/contact";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
+import { toast } from "sonner";
+import { Spinner } from "@/components/ui/spinner";
 
 const ConnectForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<{
-    type: "success" | "error" | null;
-    message: string;
-  }>({
-    type: null,
-    message: "",
+  const {
+    fn: sendiMailFn,
+    loading: sending,
+    error: mailError,
+    data: mailData,
+  } = useFetch(sendMail);
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    reset,
+  } = useForm<z.infer<typeof contactSchema>>({
+    resolver: zodResolver(contactSchema),
   });
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  const onsubmit = async (data: z.infer<typeof contactSchema>) => {
+    if (sending) return;
 
-    setIsSubmitting(true);
-    setStatus({ type: null, message: "" });
+    await sendiMailFn(data);
+    reset();
+  };
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    const payload = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Something went wrong.");
-      }
-
-      setStatus({
-        type: "success",
-        message: "Your message has been sent successfully.",
-      });
-
-      form.reset();
-    } catch (error) {
-      setStatus({
-        type: "error",
-        message:
-          error instanceof Error
-            ? error.message
-            : "Failed to send your message. Please try again.",
-      });
-    } finally {
-      setIsSubmitting(false);
+  useEffect(() => {
+    if (mailData?.status) {
+      toast.success(mailData.message);
     }
-  }
+    if (!mailData?.status && mailData?.message) {
+      toast.error(mailData.message);
+    }
+    if (mailError) {
+      toast.error("Something went wrong. Please try again.");
+    }
+  }, [mailData, mailError]);
 
   return (
     <div
-      className="
-        connect-block
-        rounded-md
-        border border-white/20
-        bg-[#0E1C20]/90
-        p-5
-        text-white
-        backdrop-blur-md
+      className="connect-block rounded-md border border-white/20
+        bg-[#0E1C20]/90 p-5 text-white backdrop-blur-md
       "
     >
       <p className="mb-8 text-sm">Fill in our form:</p>
 
-      <form className="flex flex-col" onSubmit={handleSubmit}>
+      <form className="flex flex-col" onSubmit={handleSubmit(onsubmit)}>
+        {/* Name */}
         <label htmlFor="connect-name" className="sr-only">
           Name
         </label>
 
         <input
           id="connect-name"
-          name="name"
           type="text"
           placeholder="Name"
-          required
-          disabled={isSubmitting}
+          autoComplete="name"
+          {...register("name")}
+          disabled={sending}
           className="
             border-b border-white/30
             bg-transparent
@@ -100,17 +79,22 @@ const ConnectForm = () => {
           "
         />
 
+        <p className="min-h-[1.25rem] px-3 pt-1 text-xs text-red-400">
+          {errors.name?.message}
+        </p>
+
+        {/* Email */}
         <label htmlFor="connect-email" className="sr-only">
           Email address
         </label>
 
         <input
           id="connect-email"
-          name="email"
           type="email"
           placeholder="Email address"
-          required
-          disabled={isSubmitting}
+          autoComplete="email"
+          {...register("email")}
+          disabled={sending}
           className="
             border-b border-white/30
             bg-transparent
@@ -123,17 +107,21 @@ const ConnectForm = () => {
           "
         />
 
+        <p className="min-h-[1.25rem] px-3 pt-1 text-xs text-red-400">
+          {errors.email?.message}
+        </p>
+
+        {/* Subject */}
         <label htmlFor="connect-subject" className="sr-only">
           Subject
         </label>
 
         <input
           id="connect-subject"
-          name="subject"
           type="text"
           placeholder="Subject"
-          required
-          disabled={isSubmitting}
+          {...register("subject")}
+          disabled={sending}
           className="
             border-b border-white/30
             bg-transparent
@@ -146,17 +134,21 @@ const ConnectForm = () => {
           "
         />
 
+        <p className="min-h-[1.25rem] px-3 pt-1 text-xs text-red-400">
+          {errors.subject?.message}
+        </p>
+
+        {/* Message */}
         <label htmlFor="connect-message" className="sr-only">
           Your message
         </label>
 
         <textarea
           id="connect-message"
-          name="message"
           placeholder="Your message"
           rows={4}
-          required
-          disabled={isSubmitting}
+          {...register("message")}
+          disabled={sending}
           className="
             resize-none
             border-b border-white/30
@@ -170,39 +162,42 @@ const ConnectForm = () => {
           "
         />
 
-        {status.type && (
-          <p
-            role="status"
-            className={`mt-5 text-sm ${
-              status.type === "success"
-                ? "text-green-400"
-                : "text-red-400"
-            }`}
-          >
-            {status.message}
-          </p>
-        )}
+        <p className="min-h-[1.25rem] px-3 pt-1 text-xs text-red-400">
+          {errors.message?.message}
+        </p>
 
+        {/* Submit */}
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={sending}
           className="
-            mt-7 w-fit cursor-pointer
+            mt-7 flex min-w-[140px]
+            cursor-pointer
+            items-center
+            justify-center
+            gap-2
             rounded-md
             bg-orange-500
             px-7 py-4
             text-sm
+            font-bold
             uppercase
             tracking-wide
             text-white
             transition-all
-            hover:scale-105
+            hover:bg-orange-600
             disabled:cursor-not-allowed
             disabled:opacity-60
-            disabled:hover:scale-100
           "
         >
-          {isSubmitting ? "Sending..." : "Submit message"}
+          {sending ? (
+            <>
+              <Spinner className="size-4" />
+              Sending...
+            </>
+          ) : (
+            "Send Message"
+          )}
         </button>
       </form>
     </div>

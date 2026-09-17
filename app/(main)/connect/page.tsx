@@ -33,13 +33,13 @@ const ConnectPage = () => {
           relative z-10 container mx-auto
           mt-30
           px-5
-          md:py-20
+          md:py-13
         "
       >
         {/* MAIN CONTENT */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
           {/* LEFT */}
-          <div className="relative z-10 flex flex-col justify-between text-white">
+          <div className="relative  z-10 flex flex-col j text-white">
             <div className="space-y-5 md:space-y-8">
               <p className="text-left text-xl tracking-widest">
                 CONNECT WITH HGSYSTEMS
@@ -47,9 +47,7 @@ const ConnectPage = () => {
 
               <h1 className="text-left text-2xl font-extrabold md:text-5xl">
                 Intelligence starts with a
-                <span className="ml-2 text-green-700">
-                  conversation.
-                </span>
+                <span className="ml-2 text-green-700">conversation.</span>
               </h1>
 
               <div>
@@ -59,33 +57,21 @@ const ConnectPage = () => {
 
                 <p className="text-left text-4xl font-bold">
                   Let&apos;s
-                  <span className="ml-2 text-green-700">
-                    Connect!
-                  </span>
+                  <span className="ml-2 text-green-700">Connect!</span>
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* RIGHT — FORM */}
-<ConnectForm/>
-        </div>
-
-        {/* SOCIALS — SINGLE COMPONENT */}
-        <div
+               <div
           className="
             connect-block
             mt-10
-            flex flex-col
             md:mt-16
             lg:mt-20
             lg:w-1/2
           "
         >
-          <div className="flex flex-col gap-5 md:gap-10">
-            <p className="text-sm text-white/60">
-              support@hgsystems.in
-            </p>
+          <div className="flex flex-col  ">
+            <p className="text-sm text-white/60">support@hgsystems.in</p>
 
             <div className="flex items-center gap-4">
               {/* LinkedIn */}
@@ -162,6 +148,14 @@ const ConnectPage = () => {
             </div>
           </div>
         </div>
+          </div>
+
+
+          <ConnectForm />
+        </div>
+
+
+     
       </div>
     </section>
   );
