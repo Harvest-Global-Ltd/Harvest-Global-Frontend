@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   const navLinks = [
@@ -14,24 +14,14 @@ export default function Footer() {
     { title: "Connect", href: "/connect" },
   ];
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+
 
   return (
     <footer
       id="contact"
       className="relative overflow-hidden bg-[#E7F1EB] text-[#123C2B]"
     >
-      {/* =========================================================
-          MOBILE FOOTER
-      ========================================================== */}
-    {/* =========================================================
-    MOBILE FOOTER
-========================================================= */}
+ 
 <div className="block bg-[#E7F1EB] text-[#123C2B] lg:hidden">
   <div className="px-7 pb-7 pt-10">
 

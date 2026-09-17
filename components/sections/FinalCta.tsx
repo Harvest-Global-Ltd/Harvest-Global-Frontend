@@ -6,6 +6,7 @@ import gsap from "gsap";
 import Reveal from "@/components/ui/reveal/Reveal";
 import TopographicBackground from "../ui/Topography";
 import { data } from "@/data";
+import { ArrowRight } from "lucide-react";
 
 function FinalCta() {
   const { title } = data.cta;
@@ -124,9 +125,9 @@ function FinalCta() {
               />
 
               {/* Text */}
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="relative z-10 text-xs font-medium ">
                 Partner with Harvest Global
-                <span className="text-base">→</span>
+                <ArrowRight className="inline-block ml-1" />
               </span>
             </button>
           </Link>
