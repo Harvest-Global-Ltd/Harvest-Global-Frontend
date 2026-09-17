@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 import { Manrope } from "next/font/google";
-import { Toaster } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hgsystems.in"),
