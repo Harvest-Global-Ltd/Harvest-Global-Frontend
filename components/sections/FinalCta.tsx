@@ -123,8 +123,8 @@ function FinalCta() {
                   bg-[#FFF6EF]
                 "
               />
-
-              {/* Text */}
+cuohecouwh
+   c           {/* Text */}
               <span className="relative z-10 text-xs font-medium ">
                 Partner with Harvest Global
                 <ArrowRight className="inline-block ml-1" />
