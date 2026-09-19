@@ -30,19 +30,9 @@ const Team = [
     linkedin: "https://www.linkedin.com/in/chaudhary-preeti-160738199/",
     mail: "preeti.chaudhary@hgsystems.in",
   },
+ 
   {
     id: "team-2",
-    name: "AVM Pawan Kumar",
-    role: "Senior Consultant",
-
-    image: "/images/team/PawanKumar.png",
-    prev:"Former DG, DSA",
-    linkedin:
-    "https://www.linkedin.com/in/air-vice-marshal-pawan-kumar-retd-408577249/",
-    mail: "pawan.kumar@hgsystems.in",
-  },
-  {
-    id: "team-3",
     name: "Ritika Verma",
     role: "Program Management Office",
 
@@ -52,7 +42,7 @@ const Team = [
     mail: "ritika.verma@hgsystems.in",
   },
   {
-    id: "team-4",
+    id: "team-3",
     name: "Abhishek Yadav",
     role: "Finance and Market Analyst",
 

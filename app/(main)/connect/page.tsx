@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ConnectForm from "./_component/Contactform";
 
 export const metadata: Metadata = {
   title: "Connect — Harvest Global | HG Systems",
@@ -32,13 +33,13 @@ const ConnectPage = () => {
           relative z-10 container mx-auto
           mt-30
           px-5
-          md:py-20
+          md:py-13
         "
       >
         {/* MAIN CONTENT */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
           {/* LEFT */}
-          <div className="relative z-10 flex flex-col justify-between text-white">
+          <div className="relative  z-10 flex flex-col j text-white">
             <div className="space-y-5 md:space-y-8">
               <p className="text-left text-xl tracking-widest">
                 CONNECT WITH HGSYSTEMS
@@ -46,9 +47,7 @@ const ConnectPage = () => {
 
               <h1 className="text-left text-2xl font-extrabold md:text-5xl">
                 Intelligence starts with a
-                <span className="ml-2 text-green-700">
-                  conversation.
-                </span>
+                <span className="ml-2 text-green-700">conversation.</span>
               </h1>
 
               <div>
@@ -58,114 +57,21 @@ const ConnectPage = () => {
 
                 <p className="text-left text-4xl font-bold">
                   Let&apos;s
-                  <span className="ml-2 text-green-700">
-                    Connect!
-                  </span>
+                  <span className="ml-2 text-green-700">Connect!</span>
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* RIGHT — FORM */}
-<div
-  className="
-    connect-block
-    rounded-md
-    border border-white/20
-    bg-[#0E1C20]/90
-    p-5
-    text-white
-    backdrop-blur-md
-  "
->
-            <p className="mb-8 text-sm">Fill in our form:</p>
-
-            <form className="flex flex-col">
-              <label htmlFor="connect-name" className="sr-only">Name</label>
-              <input
-                id="connect-name"
-                type="text"
-                placeholder="Name"
-                className="
-                  border-b border-white/30
-                  bg-transparent
-                  px-3 py-5
-                  text-white
-                  outline-none
-                  placeholder:text-white/40
-                  focus:border-white
-                "
-              />
-
-              <label htmlFor="connect-email" className="sr-only">Email address</label>
-              <input
-                id="connect-email"
-                type="email"
-                placeholder="Email address"
-                className="
-                  border-b border-white/30
-                  bg-transparent
-                  px-3 py-5
-                  text-white
-                  outline-none
-                  placeholder:text-white/40
-                  focus:border-white
-                "
-              />
-
-              <label htmlFor="connect-message" className="sr-only">Your message</label>
-              <textarea
-                id="connect-message"
-                placeholder="Your message"
-                rows={4}
-                className="
-                  resize-none
-                  border-b border-white/30
-                  bg-transparent
-                  px-3 py-5
-                  text-white
-                  outline-none
-                  placeholder:text-white/40
-                  focus:border-white
-                "
-              />
-
-              <button
-                type="submit"
-                className="
-                  mt-7 w-fit cursor-pointer
-                  rounded-md
-                  bg-orange-500
-                  px-7 py-4
-                  text-sm
-                  uppercase
-                  tracking-wide
-                  text-white
-                  transition-all
-                  hover:scale-105
-                "
-              >
-                Submit message
-              </button>
-            </form>
-          </div>
-        </div>
-
-        {/* SOCIALS — SINGLE COMPONENT */}
-        <div
+               <div
           className="
             connect-block
             mt-10
-            flex flex-col
             md:mt-16
             lg:mt-20
             lg:w-1/2
           "
         >
-          <div className="flex flex-col gap-5 md:gap-10">
-            <p className="text-sm text-white/60">
-              support@hgsystems.in
-            </p>
+          <div className="flex flex-col  ">
+            <p className="text-sm text-white/60">support@hgsystems.in</p>
 
             <div className="flex items-center gap-4">
               {/* LinkedIn */}
@@ -242,6 +148,14 @@ const ConnectPage = () => {
             </div>
           </div>
         </div>
+          </div>
+
+
+          <ConnectForm />
+        </div>
+
+
+     
       </div>
     </section>
   );

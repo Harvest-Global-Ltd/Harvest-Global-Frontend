@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 import { Manrope } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hgsystems.in"),
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Harvest Global | Unified GeoAI Stack for Earth, Weather, and SpaceAI",
+    title:
+      "Harvest Global | Unified GeoAI Stack for Earth, Weather, and SpaceAI",
     description:
       "Harvest Global SSP Pvt Ltd (HG Systems) pioneering Earth Intelligence integrates satellite imagery, climate and weather data, ground observations and geospatial intelligence into an enterprise-grade GeoAI stack, enabling governments and industries to move from fragmented data to predictive, actionable intelligence",
     url: "https://www.hgsystems.in/",
@@ -97,6 +99,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${manrope.variable} max-w-screen h-full antialiased`}
     >
       <body className="min-h-full w-full overflow-x-hidden bg-black">
+        <Toaster position="top-right" />
         <Script
           id="organization-schema"
           type="application/ld+json"

@@ -231,3 +231,19 @@ body {
   transform: translate(-50%, -50%);
   width: 200%;
 }
+
+/* ── Sonner toast: compact mobile sizing ────────────────────────── */
+@media (max-width: 640px) {
+  :root {
+    --toast-width: min(calc(100vw - 2rem), 320px);
+  }
+
+  [data-sonner-toaster] {
+    --width: var(--toast-width) !important;
+  }
+
+  [data-sonner-toast] {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+}
