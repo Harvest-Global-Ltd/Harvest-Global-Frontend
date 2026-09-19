@@ -26,18 +26,18 @@ const Team = [
     role: "Founder & CEO",
 
     image: "/images/team/preetiChaudhary.jpeg",
-    prev:"Former IBM HK, incoming Stanford STP Program",
+    prev: "Former IBM HK, incoming Stanford STP Program",
     linkedin: "https://www.linkedin.com/in/chaudhary-preeti-160738199/",
     mail: "preeti.chaudhary@hgsystems.in",
   },
- 
+
   {
     id: "team-2",
     name: "Ritika Verma",
     role: "Program Management Office",
 
     image: "/images/team/ritika.jpeg",
-    prev:"IIT Madras",
+    prev: "IIT Madras",
     linkedin: "https://www.linkedin.com/in/ritika-verma-2329631ab/",
     mail: "ritika.verma@hgsystems.in",
   },
@@ -47,9 +47,17 @@ const Team = [
     role: "Finance and Market Analyst",
 
     image: "/images/team/abhishek.png",
-    prev:"Shaheed Sukhdev College of Business Studies",
+    prev: "Shaheed Sukhdev College of Business Studies",
     linkedin: "https://www.linkedin.com/in/abhishek-yadav-193717283/",
     mail: "abhishek.yadav@hgsystems.in",
+  },
+  {
+    id: "team-4",
+    name: "Joint Research Board",
+
+    image: "/images/no-image.jpeg",
+    prev: "Leadership from top tier Academic and Space Research Institutions",
+
   },
 ];
 
@@ -199,17 +207,15 @@ text-3xl
             the complete lifecycle:
           </p>
 
+          <div className="mt-8 w-full lg:mt-10">
+            <div className="mx-auto flex w-full max-w-[760px] flex-col lg:hidden">
+              {lifecycle.map((item, index) => {
+                const Icon = item.icon;
 
-<div className="mt-8 w-full lg:mt-10">
-
-  <div className="mx-auto flex w-full max-w-[760px] flex-col lg:hidden">
-    {lifecycle.map((item, index) => {
-      const Icon = item.icon;
-
-      return (
-        <React.Fragment key={item.title}>
-          <div
-            className="
+                return (
+                  <React.Fragment key={item.title}>
+                    <div
+                      className="
               grid
               grid-cols-[140px_1fr]
               items-center
@@ -217,10 +223,10 @@ text-3xl
               md:grid-cols-[150px_1fr]
               md:gap-7
             "
-          >
-            {/* Icon */}
-            <div
-              className="
+                    >
+                      {/* Icon */}
+                      <div
+                        className="
                 flex
                 h-16
                 w-16
@@ -236,17 +242,17 @@ text-3xl
                 md:h-[72px]
                 md:w-[72px]
               "
-            >
-              <Icon
-                className="h-7 w-7 md:h-8 md:w-8"
-                strokeWidth={1.7}
-              />
-            </div>
+                      >
+                        <Icon
+                          className="h-7 w-7 md:h-8 md:w-8"
+                          strokeWidth={1.7}
+                        />
+                      </div>
 
-            {/* Text */}
-            <div>
-              <p
-                className="
+                      {/* Text */}
+                      <div>
+                        <p
+                          className="
                   mt-1
                   text-2xl
                   font-bold
@@ -254,15 +260,15 @@ text-3xl
                   text-black
                   md:text-3xl
                 "
-              >
-                {item.title}
-              </p>
-            </div>
-          </div>
+                        >
+                          {item.title}
+                        </p>
+                      </div>
+                    </div>
 
-          {index < lifecycle.length - 1 && (
-            <div
-              className="
+                    {index < lifecycle.length - 1 && (
+                      <div
+                        className="
                 flex
                 h-10
                 w-[140px]
@@ -270,37 +276,37 @@ text-3xl
                 justify-center
                 md:w-[150px]
               "
-            >
-              <ArrowDown
-                className="h-6 w-6 text-[#E46A2A]"
-                strokeWidth={1.5}
-              />
+                      >
+                        <ArrowDown
+                          className="h-6 w-6 text-[#E46A2A]"
+                          strokeWidth={1.5}
+                        />
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
             </div>
-          )}
-        </React.Fragment>
-      );
-    })}
-  </div>
 
-  {/* Desktop */}
-  <div
-    className="
+            {/* Desktop */}
+            <div
+              className="
       hidden
       lg:grid
       lg:grid-cols-4
       lg:gap-8
     "
-  >
-    {lifecycle.map((item, index) => {
-      const Icon = item.icon;
+            >
+              {lifecycle.map((item, index) => {
+                const Icon = item.icon;
 
-      return (
-        <div
-          key={item.title}
-          className="relative flex items-center gap-4"
-        >
-          <div
-            className="
+                return (
+                  <div
+                    key={item.title}
+                    className="relative flex items-center gap-4"
+                  >
+                    <div
+                      className="
               flex
               h-16
               w-16
@@ -313,24 +319,19 @@ text-3xl
               bg-[#E46A2A]/10
               text-[#E46A2A]
             "
-          >
-            <Icon
-              className="h-7 w-7"
-              strokeWidth={1.7}
-            />
-          </div>
+                    >
+                      <Icon className="h-7 w-7" strokeWidth={1.7} />
+                    </div>
 
-          <div>
-           
+                    <div>
+                      <p className="mt-1 text-lg font-bold text-black">
+                        {item.title}
+                      </p>
+                    </div>
 
-            <p className="mt-1 text-lg font-bold text-black">
-              {item.title}
-            </p>
-          </div>
-
-          {index < lifecycle.length - 1 && (
-            <ArrowRight
-              className="
+                    {index < lifecycle.length - 1 && (
+                      <ArrowRight
+                        className="
                 absolute
                 -right-6
                 top-1/2
@@ -339,14 +340,14 @@ text-3xl
                 -translate-y-1/2
                 text-[#E46A2A]
               "
-              strokeWidth={1.5}
-            />
-          )}
-        </div>
-      );
-    })}
-  </div>
-</div>
+                        strokeWidth={1.5}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </Reveal>
 
         {/* Team */}
@@ -366,6 +367,7 @@ text-3xl
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

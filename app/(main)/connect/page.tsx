@@ -71,7 +71,7 @@ const ConnectPage = () => {
           "
         >
           <div className="flex flex-col  ">
-            <p className="text-sm text-white/60">support@hgsystems.in</p>
+            <p className="text-sm text-white/60">contact@hgsystems.in</p>
 
             <div className="flex items-center gap-4">
               {/* LinkedIn */}
