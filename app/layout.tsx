@@ -69,7 +69,7 @@ const organizationSchema = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    email: "support@hgsystems.in",
+    email: "contact@hgsystems.in",
     contactType: "customer service",
   },
   sameAs: [

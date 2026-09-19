@@ -55,7 +55,7 @@ export default function Footer() {
 
       {/* Email */}
       <a
-        href="mailto:support@hgsystems.in"
+        href="mailto:contact@hgsystems.in"
         className="flex items-center gap-4 text-[15px] text-[#123C2B]/75 transition-colors hover:text-[#E46A2A]"
       >
         <Mail
@@ -64,7 +64,7 @@ export default function Footer() {
           className="shrink-0 text-[#E46A2A]"
         />
 
-        <span>support@hgsystems.in</span>
+        <span>contact@hgsystems.in</span>
       </a>
 
       {/* Phone */}
@@ -303,10 +303,10 @@ export default function Footer() {
                   </p>
 
                   <a
-                    href="mailto:support@hgsystems.in"
+href="mailto:contact@hgsystems.in"
                     className="text-sm text-[#123C2B]/75 transition-colors duration-300 hover:text-[#E46A2A]"
                   >
-                    support@hgsystems.in
+                    contact@hgsystems.in
                   </a>
                 </div>
 
