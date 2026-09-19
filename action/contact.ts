@@ -35,10 +35,7 @@ ${data.message}
     console.error("Contact form / SMTP error:", error);
     return {
       status: false,
-      message:
-        error instanceof Error
-          ? error.message
-          : "Failed to send your message. Please try again.",
+      message: "Failed to send your message. Please try again.",
     };
   }
 };
