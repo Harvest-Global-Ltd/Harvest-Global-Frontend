@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
+const HAS_SEEN_KEY = "hg-intro-seen";
+
 export default function Intro() {
   const introRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLImageElement>(null);
@@ -18,6 +20,10 @@ export default function Intro() {
 
     if (!intro || !text) return;
 
+    // Never block meaningful content:
+    //  - deep links skip the overlay,
+    //  - reduced-motion users are not shown an elaborate intro,
+    //  - returning visitors only get a brief, snappier version.
     if (hasHash) {
       intro.style.display = "none";
       window.dispatchEvent(new CustomEvent("intro-complete"));
@@ -35,6 +41,31 @@ export default function Intro() {
       return;
     }
 
+    const skipToContent = () => {
+      window.dispatchEvent(new CustomEvent("intro-complete"));
+    };
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    const seenBefore = sessionStorage.getItem(HAS_SEEN_KEY) === "1";
+
+    if (reduceMotion.matches) {
+      intro.style.display = "none";
+      skipToContent();
+      return;
+    }
+
+    const reduceChange = () => {
+      if (reduceMotion.matches) {
+        tl.pause();
+        intro.style.display = "none";
+        tl.set(intro, { display: "none" });
+        skipToContent();
+      }
+    };
+    reduceMotion.addEventListener?.("change", reduceChange);
+
     const tl = gsap.timeline();
 
     gsap.set(text, {
@@ -45,41 +76,61 @@ export default function Intro() {
       clipPath: "inset(0 100% 0 0)",
     });
 
-    // Typewriter-style left-to-right reveal of the wordmark.
-    tl.to(text, {
-      clipPath: "inset(0 0% 0 0)",
-      opacity: 1,
-      filter: "blur(0px)",
-      scale: 1,
-      duration: 1.6,
-      ease: "none",
-    });
-
-    // Hold the full logo for a beat, then fade the whole overlay out and
-    // let the site content reveal underneath.
-    tl.to(
-      {},
-      {
-        duration: 0.6,
-      },
-    );
-
-    tl.to(
-      intro,
-      {
-        opacity: 0,
+    if (seenBefore) {
+      // Returning visitor: quick reveal, no hold, fast fade out.
+      tl.to(text, {
+        clipPath: "inset(0 0% 0 0)",
+        opacity: 1,
+        filter: "blur(0px)",
+        scale: 1,
         duration: 0.5,
-        ease: "power2.out",
-        onStart: () => {
-          window.dispatchEvent(new CustomEvent("intro-complete"));
+        ease: "none",
+      });
+      tl.to(
+        intro,
+        {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.out",
+          onStart: skipToContent,
         },
-      },
-    );
+        "-=0.2",
+      );
+    } else {
+      // First visit: typewriter-style wordmark reveal, brief hold, fade out.
+      tl.to(text, {
+        clipPath: "inset(0 0% 0 0)",
+        opacity: 1,
+        filter: "blur(0px)",
+        scale: 1,
+        duration: 1,
+        ease: "none",
+      });
+      tl.to(
+        {},
+        {
+          duration: 0.25,
+        },
+      );
+      tl.to(
+        intro,
+        {
+          opacity: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          onStart: () => {
+            sessionStorage.setItem(HAS_SEEN_KEY, "1");
+            skipToContent();
+          },
+        },
+      );
+    }
 
     tl.set(intro, { display: "none" });
 
     return () => {
       tl.kill();
+      reduceMotion.removeEventListener?.("change", reduceChange);
     };
   });
 

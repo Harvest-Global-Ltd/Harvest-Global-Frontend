@@ -120,8 +120,18 @@ function Technology() {
   return (
     <section
       id="technology"
-      className="relative min-h-screen overflow-hidden bg-[url('/images/site-bg/bg1.png')] bg-cover bg-center py-28"
+      className="relative min-h-screen overflow-hidden py-28"
     >
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/site-bg/bg1.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       
       <div className="container relative mx-auto px-5">
         {/* Header */}

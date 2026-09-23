@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ChevronDown, ChevronUp } from "lucide-react";
 interface AccordionItem {
@@ -456,9 +457,12 @@ export default function AccordionGallery({
         >
           {/* IMAGE */}
           <div className="absolute inset-0 overflow-hidden">
-            <img
+            <Image
               src={item.image}
               alt={item.title}
+              fill
+              draggable={false}
+              sizes="(min-width: 1024px) 45vw, 100vw"
               className="
                 card-image
                 absolute

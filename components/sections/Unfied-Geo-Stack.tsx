@@ -188,13 +188,22 @@ export default function UnifiedGeoStack() {
       id="unified-geo-stack"
       className="
         relative min-h-screen overflow-hidden
-        bg-[url('/images/site-bg/bg3.png')]
-        bg-cover bg-center
         py-20
         sm:py-24
         lg:py-28
       "
     >
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/site-bg/bg3.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+
       <div className="container relative z-10 mx-auto px-5">
 
         {/* =========================================
@@ -310,10 +319,10 @@ export default function UnifiedGeoStack() {
               "
             >
               <Image
-                src="/images/earth.png"
+                src="/images/earth.webp"
                 alt="Earth"
                 fill
-                priority
+                sizes="(max-width: 1023px) 70vw, 430px"
                 className="object-contain"
               />
 
@@ -589,10 +598,10 @@ export default function UnifiedGeoStack() {
                 "
               >
                 <Image
-                  src="/images/earth.png"
+                  src="/images/earth.webp"
                   alt="Earth"
                   fill
-                  priority
+                  sizes="430px"
                   className="object-contain"
                 />
 

@@ -1,15 +1,9 @@
 import Hero from "@/components/Hero";
-
-import Applications from "@/components/sections/Applications";
 import Footer from "@/components/footer/Footer";
-import FinalCta from "@/components/sections/FinalCta";
+
 import Navbar from "@/components/Navbar";
 import HeroReveal from "@/components/ui/HeroReveal";
-
-import Challenge from "@/components/sections/Challenge";
-import ParternerdLogo from "@/components/sections/ParternerdLogo";
-import Technology from "@/components/sections/Technology";
-import UnifiedGeoStack from "@/components/sections/Unfied-Geo-Stack";
+import LazySection from "@/components/ui/LazySection";
 import Vision from "@/components/sections/Vision";
 
 export default function Home() {
@@ -20,16 +14,15 @@ export default function Home() {
       <main className="bg-black text-white">
         <Hero />
         <HeroReveal />
-        <ParternerdLogo />
 
+        {/* Below-the-fold sections mount on demand (see LazySection). */}
+        <LazySection id="partners" />
         <Vision />
-
-        <Challenge />
-
-        <Technology />
-        <UnifiedGeoStack />
-        <Applications />
-        <FinalCta />
+        <LazySection id="challenge" />
+        <LazySection id="technology" />
+        <LazySection id="unified-geo-stack" />
+        <LazySection id="applications" />
+        <LazySection id="final-cta" />
       </main>
 
       <Footer />
