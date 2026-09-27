@@ -3,7 +3,6 @@ import Script from "next/script";
 import "./globals.css";
 
 import { Manrope } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hgsystems.in"),
@@ -88,7 +87,6 @@ const websiteSchema = {
 
 const manrope = Manrope({
   variable: "--font-manrope",
-  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
 
@@ -99,7 +97,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${manrope.variable} max-w-screen h-full antialiased`}
     >
       <body className="min-h-full w-full overflow-x-hidden bg-black">
-        <Toaster position="top-right" />
         <Script
           id="organization-schema"
           type="application/ld+json"

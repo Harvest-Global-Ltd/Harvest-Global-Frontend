@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Layers3, BrainCircuit, Server, ShieldCheck } from "lucide-react";
 
 import Reveal from "@/components/ui/reveal/Reveal";
@@ -40,13 +41,15 @@ const Challenge = () => {
       "
     >
       {/* Background */}
-      <div
-        className="
-          pointer-events-none absolute inset-0
-          bg-[url('/images/site-bg/bg6.png')]
-          bg-cover bg-center
-        "
-      />
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/site-bg/bg6.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
 
       {/* Overlay */}
       <div className="pointer-events-none absolute inset-0 bg-[#031812]/50" />

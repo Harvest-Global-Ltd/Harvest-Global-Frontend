@@ -3,7 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
+import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(SplitText);
 
@@ -37,11 +37,18 @@ const Hero = () => {
         typeof window !== "undefined" &&
         Boolean(window.location.hash && window.location.hash.length > 1);
 
-      if (hasHash) {
+      const prefersReduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      if (hasHash || prefersReduced) {
         gsap.set(".hero-content", {
           visibility: "visible",
           opacity: 1,
         });
+        if (prefersReduced) {
+          window.dispatchEvent(new CustomEvent("intro-complete"));
+        }
         return () => {
           window.removeEventListener("mousemove", handleMouseMove);
         };
@@ -70,7 +77,12 @@ const Hero = () => {
         opacity: 0,
       });
 
+      let started = false;
+
       const startHeroAnimation = () => {
+        if (started) return;
+        started = true;
+
         const tl = gsap.timeline();
 
         tl.set(".hero-content", {
@@ -106,9 +118,15 @@ const Hero = () => {
 
       window.addEventListener("intro-complete", startHeroAnimation);
 
+      // Safety net: never let the intro gate leave the hero content hidden.
+      const failsafe = window.setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("intro-complete"));
+      }, 2500);
+
       return () => {
         window.removeEventListener("mousemove", handleMouseMove);
         window.removeEventListener("intro-complete", startHeroAnimation);
+        window.clearTimeout(failsafe);
 
         heroHighlight.revert();
         subtitle.revert();
@@ -131,9 +149,21 @@ const Hero = () => {
     autoPlay
     muted
     playsInline
+    disablePictureInPicture
+    preload="metadata"
+    poster="/images/hero-poster.jpg"
     className="h-full w-full scale-[1.08] object-cover object-center md:object-left"
   >
-    <source src="/videos/earth-hori.mp4" type="video/mp4" />
+    <source
+      media="(max-width: 1023px)"
+      src="/videos/earth-hori-720.mp4"
+      type="video/mp4"
+    />
+    <source
+      media="(min-width: 1024px)"
+      src="/videos/earth-hori-1080.mp4"
+      type="video/mp4"
+    />
   </video>
 
   {/* Mobile Earth glow — from left edge */}

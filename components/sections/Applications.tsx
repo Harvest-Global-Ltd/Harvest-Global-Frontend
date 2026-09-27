@@ -3,6 +3,7 @@
 import ApplicationExpanded from "../ui/ApplicationExpanded";
 import ApplicationTabs from "../ui/ApplicationTabs";
 import TopographicBackground from "../ui/Topography";
+import Image from "next/image";
 
 const applicationsData = {
   agriculture: {
@@ -224,8 +225,18 @@ export default function Applications() {
   return (
     <section
       id="applications"
-      className="relative w-full min-h-screen bg-[url('/images/site-bg/bg2.png')] bg-cover bg-center bg-no-repeat px-5 py-24 text-white  md:overflow-hidden"
+      className="relative w-full min-h-screen px-5 py-24 text-white  md:overflow-hidden"
     >
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/site-bg/bg2.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       <div className="pointer-events-none absolute inset-0 z-0">
         <TopographicBackground />
       </div>

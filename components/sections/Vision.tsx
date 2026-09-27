@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 
 const Vision = () => {
   return (
@@ -7,11 +7,19 @@ const Vision = () => {
       className="
         relative min-h-screen w-full overflow-hidden
         bg-[#020914]
-
-        bg-[url('/images/site-bg/bg-10.png')]
-        bg-cover bg-center bg-no-repeat
       "
     >
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/site-bg/bg-10.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#020914]/95 via-[#020914]/70 to-transparent" />
 

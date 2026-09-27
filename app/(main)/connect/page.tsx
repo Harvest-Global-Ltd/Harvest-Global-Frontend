@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ConnectForm from "./_component/Contactform";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Connect — Harvest Global | HG Systems",
@@ -152,6 +153,7 @@ const ConnectPage = () => {
 
 
           <ConnectForm />
+      <Toaster position="top-right" />
         </div>
 
 

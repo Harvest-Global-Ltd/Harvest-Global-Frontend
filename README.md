@@ -1,5 +1,28 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Cloud Run cold starts
+
+The service is deployed on Google Cloud Run from the `Dockerfile`. The site can
+feel slow after the service has been idle (a cold start) because Cloud Run
+provisions a fresh instance on demand. The recommended Cloud Run settings,
+which live in the Cloud Run console/`gcloud` (not in this repo), are:
+
+```bash
+gcloud run services update harvest-global \
+  --min-instances 1 \
+  --max-instances 10 \
+  --cpu 2 \
+  --memory 1Gi \
+  --concurrency 80
+```
+
+- `--min-instances 1` keeps one container warm at all times, eliminating the
+  idle cold start entirely. Tradeoff: a small always-on cost for that instance
+  (one instance ~2 vCPU/1 GiB continuously instead of billed-per-request only).
+- `--max-instances` and `--concurrency` are optional guardrails; keep them
+  aligned with expected traffic so the warm instance absorbs burst loads.
+- CPU is always allocated (default) so the warm instance is ready immediately.
+
 ## Getting Started
 
 First, run the development server:

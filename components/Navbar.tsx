@@ -59,10 +59,16 @@ function Navbar() {
 
     window.addEventListener("hashchange", handleHashChange);
 
-    const techEl = document.getElementById("technology");
     let observer: IntersectionObserver | null = null;
 
-    if (techEl) {
+    // The #technology section is mounted on demand (see LazySection), so it
+    // may not exist yet when the navbar mounts. Poll until it appears, then
+    // start tracking it for the active-nav state.
+    const elementPoller = window.setInterval(() => {
+      const techEl = document.getElementById("technology");
+      if (!techEl) return;
+
+      window.clearInterval(elementPoller);
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -83,7 +89,7 @@ function Navbar() {
       );
 
       observer.observe(techEl);
-    }
+    }, 500);
 
     const handleScroll = () => {
       if (window.scrollY < 150 && window.location.hash !== "#technology") {
@@ -96,6 +102,7 @@ function Navbar() {
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
       window.removeEventListener("scroll", handleScroll);
+      window.clearInterval(elementPoller);
       if (observer) observer.disconnect();
     };
   }, [pathname]);
