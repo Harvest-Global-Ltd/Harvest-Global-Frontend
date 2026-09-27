@@ -76,55 +76,58 @@ export default function Intro() {
       clipPath: "inset(0 100% 0 0)",
     });
 
-    if (seenBefore) {
-      // Returning visitor: quick reveal, no hold, fast fade out.
-      tl.to(text, {
-        clipPath: "inset(0 0% 0 0)",
-        opacity: 1,
-        filter: "blur(0px)",
-        scale: 1,
-        duration: 0.5,
-        ease: "none",
-      });
-      tl.to(
-        intro,
-        {
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.out",
-          onStart: skipToContent,
-        },
-        "-=0.2",
-      );
-    } else {
-      // First visit: typewriter-style wordmark reveal, brief hold, fade out.
-      tl.to(text, {
-        clipPath: "inset(0 0% 0 0)",
-        opacity: 1,
-        filter: "blur(0px)",
-        scale: 1,
-        duration: 1,
-        ease: "none",
-      });
-      tl.to(
-        {},
-        {
-          duration: 0.25,
-        },
-      );
-      tl.to(
-        intro,
-        {
-          opacity: 0,
-          duration: 0.4,
-          ease: "power2.out",
-          onStart: () => {
-            sessionStorage.setItem(HAS_SEEN_KEY, "1");
-            skipToContent();
-          },
-        },
-      );
-    }
+ if (seenBefore) {
+  // Returning visitor: slower, smoother reveal.
+  tl.to(text, {
+    clipPath: "inset(0 0% 0 0)",
+    opacity: 1,
+    filter: "blur(0px)",
+    scale: 1,
+    duration: 0.9,
+    ease: "none",
+  });
+
+  tl.to(
+    intro,
+    {
+      opacity: 0,
+      duration: 0.7,
+      ease: "power2.out",
+      onStart: skipToContent,
+    },
+    "-=0.3",
+  );
+} else {
+  // First visit: slower cinematic wordmark reveal.
+  tl.to(text, {
+    clipPath: "inset(0 0% 0 0)",
+    opacity: 1,
+    filter: "blur(0px)",
+    scale: 1,
+    duration: 1.8,
+    ease: "none",
+  });
+
+  tl.to(
+    {},
+    {
+      duration: 0.5,
+    },
+  );
+
+  tl.to(
+    intro,
+    {
+      opacity: 0,
+      duration: 0.7,
+      ease: "power2.out",
+      onStart: () => {
+        sessionStorage.setItem(HAS_SEEN_KEY, "1");
+        skipToContent();
+      },
+    },
+  );
+}
 
     tl.set(intro, { display: "none" });
 
