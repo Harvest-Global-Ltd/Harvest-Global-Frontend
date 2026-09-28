@@ -197,19 +197,37 @@ const Hero = () => {
       </div>
 
 <div className="hero-content container mx-auto flex h-full flex-col items-center justify-center px-5 text-center md:items-start md:justify-end md:text-left md:pb-20">
-  <h1 className="tracking-wider text-white text-3xl leading-[0.9] md:text-6xl lg:text-7xl">
-    <span className="highlight-tag font-extrabold">
-    GeoAI Intelligence
+  <h1 className="max-w-5xl tracking-tight text-white text-4xl leading-[0.95] font-extrabold md:text-6xl lg:text-7xl">
+    <span className="highlight-tag">
+      Earth, Weather
     </span>
     <br />
-    <span className="highlight-tag font-extrabold">
-      for Earth Observation
+    <span className="highlight-tag text-white/90">
+      & Space AI Unified Stack
     </span>
   </h1>
 
-  <p className="subtitle mt-5 max-w-[320px] text-sm leading-relaxed text-white/70 sm:text-base md:mt-6 md:max-w-none md:text-xl">
-    Sovereign GeoAI. Private AI Cloud. Edge Intelligence.
-  </p>
+  <div className="subtitle mt-6 max-w-4xl text-sm leading-relaxed sm:text-base md:mt-7 md:text-lg lg:text-xl">
+    <p className="text-white/70">
+      Building integrated intelligence across
+    </p>
+
+    <div className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 md:justify-start">
+      <span className="text-white/90">GeoAI</span>
+      <span className="text-white/30">•</span>
+
+      <span className="text-white/90">GeoFM</span>
+      <span className="text-white/30">•</span>
+
+      <span className="text-white/90">Sovereign AI</span>
+      <span className="text-white/30">•</span>
+
+      <span className="text-white/90">Ground Segment Infrastructure</span>
+      <span className="text-white/30">•</span>
+
+      <span className="text-white/90">Edge Intelligence</span>
+    </div>
+  </div>
 </div>
     </section>
   );
