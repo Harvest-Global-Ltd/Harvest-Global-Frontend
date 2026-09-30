@@ -37,7 +37,7 @@ const roadmapData: RoadmapItem[] = [
     year: "2026",
     title: "GeoAI Stack Build",
     description:
-      "Unified GeoAI Stack investment; Pre-Series funding; VC Fund proposal with SIDBI / IN-SPACe.",
+      "Joint ANRF ACE Program of about 200 Cr with IITG, NESAC, ASSAC, HPE and other government, Space and Technology Research Partners",
     icon: "layers",
     accent: "orange",
   },
