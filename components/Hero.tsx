@@ -197,17 +197,17 @@ const Hero = () => {
       </div>
 
 <div className="hero-content container mx-auto flex h-full flex-col items-center justify-center px-5 text-center md:items-start md:justify-end md:text-left md:pb-20">
-  <h1 className="max-w-5xl tracking-tight text-white text-4xl leading-[0.95] font-extrabold md:text-6xl lg:text-7xl">
+  <h1 className="max-w-5xl tracking-tight scale-125 md:scale-100 text-white text-2xl  font-extrabold md:text-6xl lg:text-7xl">
     <span className="highlight-tag">
       Earth, Weather
     </span>
     <br />
-    <span className="highlight-tag text-white/90">
+    <span className="highlight-tag  text-white/90">
       & Space AI Unified Stack
     </span>
   </h1>
 
-  <div className="subtitle mt-6 max-w-4xl text-sm leading-relaxed sm:text-base md:mt-7 md:text-lg lg:text-xl">
+  <div className="subtitle mt-6 max-w-2xl text-xs leading-relaxed sm:text-base md:mt-7 md:text-lg lg:text-xl">
     <p className="text-white/70">
       Building integrated intelligence across
     </p>
