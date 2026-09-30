@@ -14,12 +14,11 @@ export default function Home() {
       <main className="bg-black text-white">
         <Hero />
         <HeroReveal />
-
-        {/* Below-the-fold sections mount on demand (see LazySection). */}
         <LazySection id="partners" />
         <Vision />
         <LazySection id="challenge" />
         <LazySection id="technology" />
+        <LazySection id="roadmap" />
         <LazySection id="unified-geo-stack" />
         <LazySection id="applications" />
         <LazySection id="final-cta" />
