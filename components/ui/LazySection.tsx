@@ -3,10 +3,7 @@
 import dynamic from "next/dynamic";
 import { Suspense, useEffect, useRef, useState } from "react";
 
-// Below-the-fold homepage sections render on demand (just before entering the
-// viewport) so GSAP/ScrollTrigger initialization, hydration and their JS
-// chunks are kept out of the initial page load. Section ids are preserved for
-// anchor navigation: arriving with a hash immediately mounts the target.
+
 const ParternerdLogo = dynamic(
   () => import("@/components/sections/ParternerdLogo"),
   { ssr: false },
@@ -28,6 +25,9 @@ const Applications = dynamic(
 const FinalCta = dynamic(() => import("@/components/sections/FinalCta"), {
   ssr: false,
 });
+const Roadmap = dynamic(() => import("@/components/sections/Roadmap"), {
+  ssr: false,
+});
 
 const REGISTRY = {
   partners: ParternerdLogo,
@@ -36,6 +36,7 @@ const REGISTRY = {
   "unified-geo-stack": UnifiedGeoStack,
   applications: Applications,
   "final-cta": FinalCta,
+  "roadmap": Roadmap,
 } as const;
 
 export type LazySectionId = keyof typeof REGISTRY;
