@@ -31,16 +31,7 @@ const Team = [
     mail: "preeti.chaudhary@hgsystems.in",
   },
 
-  {
-    id: "team-2",
-    name: "Ritika Verma",
-    role: "Program Management Office",
 
-    image: "/images/team/ritika.jpeg",
-    prev: "IIT Madras",
-    linkedin: "https://www.linkedin.com/in/ritika-verma-2329631ab/",
-    mail: "ritika.verma@hgsystems.in",
-  },
   {
     id: "team-3",
     name: "Abhishek Yadav",
