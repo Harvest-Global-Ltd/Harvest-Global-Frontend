@@ -11,7 +11,6 @@ gsap.registerPlugin(useGSAP);
 
 const navLinks = [
   { title: "Home", href: "/" },
-  { title: "Team", href: "/team" },
   { title: "Technology", href: "/#technology" },
   { title: "Media", href: "/credentials" },
 ];
