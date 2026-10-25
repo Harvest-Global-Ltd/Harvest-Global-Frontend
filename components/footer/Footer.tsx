@@ -5,7 +5,6 @@ import { Mail, MapPin } from "lucide-react";
 export default function Footer() {
   const navLinks = [
     { title: "Home", href: "/" },
-    { title: "About", href: "/team" },
     { title: "Technology", href: "/#technology" },
     { title: "Media", href: "/credentials" },
 
